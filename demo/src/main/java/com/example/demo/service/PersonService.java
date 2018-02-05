@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Person;
 import com.example.demo.repository.PersonRepository;
+import com.example.demo.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.config.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +26,9 @@ public class PersonService  {
     @Autowired
     PersonRepository personRepository;
 
+    @Autowired
+    SkillService skillService;
+
   public List<Person> getAllPersons(){
         return personRepository.findAll();
     }
@@ -46,7 +50,10 @@ public class PersonService  {
     }
 
     public void deletePerson(Long id) {
+
+      skillService.deleteSkills(id);
       personRepository.delete(id);
+
     }
 
     public void createPerson(Person person) {

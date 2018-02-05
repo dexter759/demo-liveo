@@ -24,7 +24,7 @@ public class Person {
     private String surname;
 
     @OneToMany(mappedBy = "person")
-    private Set<Skill> skill = new HashSet<Skill>();
+    private Set<Skill> skill = new HashSet<>();
 
 
     public Person() {
@@ -67,12 +67,4 @@ public class Person {
         this.skill = skill;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "id=" + id +
-                ", name=" + name +
-                ", surname=" + surname +
-                '}';
-    }
 }

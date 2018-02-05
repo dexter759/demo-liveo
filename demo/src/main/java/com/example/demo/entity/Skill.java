@@ -69,12 +69,4 @@ public class Skill {
         this.person = person;
     }
 
-    @Override
-    public String toString() {
-        return "{" +
-                "id=" + id +
-                ", name=" + name+
-                ", level=" + level+
-                '}';
-    }
 }

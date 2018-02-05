@@ -3,7 +3,6 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Person;
 import com.example.demo.service.PersonService;
-import com.example.demo.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,8 +21,6 @@ public class PersonController {
     @Autowired
     PersonService personService;
 
-    @Autowired
-    SkillService skillService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> getAllPersons(){
@@ -59,7 +56,6 @@ public class PersonController {
                     .body("Bad Request there is no user with id:"+ id+" so we can't delete him");
         }
 
-        skillService.deleteSkills(person.getId());
         personService.deletePerson(person.getId());
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("You have deleted the user successfully");

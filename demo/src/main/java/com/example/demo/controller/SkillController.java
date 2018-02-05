@@ -26,7 +26,7 @@ public class SkillController {
     public ResponseEntity<?> getAllSkills(){
         List<Skill> skillList = skillService.getAllSkill();
         if(skillList.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is no users in our database");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There is no skills in our database");
         }
         return ResponseEntity.ok().body(skillList);
     }

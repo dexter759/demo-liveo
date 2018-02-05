@@ -1,0 +1,11 @@
+com\example\demo\DemoApplication.class
+com\example\demo\controller\SkillController.class
+com\example\demo\service\PersonService.class
+com\example\demo\repository\SkillRepository.class
+com\example\demo\entity\Person.class
+com\example\demo\entity\Level.class
+com\example\demo\entity\Skill.class
+com\example\demo\AppConfig.class
+com\example\demo\repository\PersonRepository.class
+com\example\demo\controller\PersonController.class
+com\example\demo\service\SkillService.class

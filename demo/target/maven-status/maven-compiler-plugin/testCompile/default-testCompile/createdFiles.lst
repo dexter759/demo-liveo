@@ -1,0 +1,4 @@
+com\example\demo\IntegrationTest\IntegrationSkillRestControllerTest.class
+com\example\demo\IntegrationTest\JSONRead.class
+com\example\demo\UnitTest\UnitPersonRestControllerTest.class
+com\example\demo\IntegrationTest\IntegrationPersonRestControllerTest.class
