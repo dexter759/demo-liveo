@@ -25,6 +25,8 @@ public class JwtValidator {
             jwtUser.setPassword((String)body.get("password"));
             jwtUser.setRole((String) body.get("role"));
 
+            System.out.println("Ovo zadnje"+ jwtUser.getRole());
+
 
         }catch (Exception e){
             System.out.println(e);

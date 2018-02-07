@@ -35,7 +35,7 @@ public class JwtUserService {
       }
 
       if(passwordEncoder.matches(jwtUser.getPassword(),jwtUser1.getPassword())){
-          return jwtGenerator.generate(jwtUser);
+          return jwtGenerator.generate(jwtUser1);
       }
 
         return null;

@@ -5,6 +5,7 @@ import com.example.demo.entity.Skill;
 import com.example.demo.repository.PersonRepository;
 import com.example.demo.repository.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -26,11 +27,13 @@ public class SkillService {
     PersonRepository personRepository;
 
     @PreAuthorize("hasAnyAuthority('admin')")
+    @CacheEvict(value = "persons", allEntries = true)
     public void deleteSkills(Long id){
         final String sql = "DELETE FROM skill WHERE person_id = ?";
         jdbcTemplate.update(sql, id);
     }
     @PreAuthorize("hasAnyAuthority('admin')")
+    @CacheEvict(value = "persons", allEntries = true)
     public void addSkill(Skill skill){
        skillRepository.save(skill);
     }
@@ -47,6 +50,7 @@ public class SkillService {
 
 
     @PreAuthorize("hasAnyAuthority('admin')")
+    @CacheEvict(value = "persons", allEntries = true)
     public void updateSkill(Skill skills){
         Skill skill = skillRepository.findOne(skills.getId());
 
