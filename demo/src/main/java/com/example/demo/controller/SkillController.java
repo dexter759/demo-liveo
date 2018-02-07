@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/skills")
+@RequestMapping("api/admin/skills")
 public class SkillController {
 
     @Autowired
