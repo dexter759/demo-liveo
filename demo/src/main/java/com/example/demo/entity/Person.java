@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
@@ -58,6 +59,7 @@ public class Person {
     public void setId(Long id) {
         this.id = id;
     }
+
 
     public Set<Skill> getSkill() {
         return skill;

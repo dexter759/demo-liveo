@@ -2,7 +2,9 @@ package com.example.demo.IntegrationTest;
 
 
 import com.example.demo.DemoApplication;
+import com.example.demo.entity.JwtUser;
 import com.example.demo.entity.Person;
+import com.example.demo.security.JwtGenerator;
 import org.json.JSONException;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,6 +29,10 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest(classes = DemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationPersonRestControllerTest {
 
+    private JwtGenerator jwtGenerator = new JwtGenerator();
+    private JwtUser jwtUser = new JwtUser(1L,"test","admin","test123");
+
+
     private JSONRead jsonRead = new JSONRead();
 
     @LocalServerPort
@@ -42,7 +48,10 @@ public class IntegrationPersonRestControllerTest {
 
     @Before
     public void setUp() {
+
+        final String token = jwtGenerator.generate(jwtUser);
         restTemplate = new TestRestTemplate();
+        headers.add("Authorisation",token);
     }
 
 

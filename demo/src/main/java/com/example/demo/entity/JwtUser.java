@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import org.hibernate.mapping.IdGenerator;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.context.annotation.Primary;
 import org.springframework.data.repository.query.Param;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 
 @Entity
 public class JwtUser {
+
+
 
     @Id
     @NotBlank
@@ -58,4 +61,21 @@ public class JwtUser {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public JwtUser(String userName, String role, String password) {
+        this.userName = userName;
+        this.role = role;
+        this.password = password;
+    }
+    public JwtUser(Long id,String userName, String role, String password) {
+        this.id = id;
+        this.userName = userName;
+        this.role = role;
+        this.password = password;
+    }
+
+    public JwtUser() {
+    }
 }
+
+

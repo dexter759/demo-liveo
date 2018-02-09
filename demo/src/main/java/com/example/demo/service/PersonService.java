@@ -39,7 +39,6 @@ public class PersonService  {
   public List<Person> getAllPersons(){
         return personRepository.findAll();
     }
-
     @PreAuthorize("hasAnyAuthority('admin','user')")
     @Cacheable("person")
     public Person getOnePerson(long id) {

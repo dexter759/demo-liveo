@@ -2,9 +2,11 @@ package com.example.demo.IntegrationTest;
 
 
 import com.example.demo.DemoApplication;
+import com.example.demo.entity.JwtUser;
 import com.example.demo.entity.Level;
 import com.example.demo.entity.Person;
 import com.example.demo.entity.Skill;
+import com.example.demo.security.JwtGenerator;
 import com.example.demo.service.SkillService;
 import org.json.JSONException;
 import org.junit.Assert;
@@ -31,6 +33,9 @@ import static org.junit.Assert.assertTrue;
 @SpringBootTest(classes = DemoApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class IntegrationSkillRestControllerTest {
 
+    private JwtGenerator jwtGenerator = new JwtGenerator();
+    private JwtUser jwtUser = new JwtUser(1L,"test","admin","test123");
+
     @LocalServerPort
     private int port;
 
@@ -45,7 +50,10 @@ public class IntegrationSkillRestControllerTest {
 
     @Before
     public void setUp() {
+
+        final String token = jwtGenerator.generate(jwtUser);
         restTemplate = new TestRestTemplate();
+        headers.add("Authorisation",token);
     }
 
     private String createURLWithPort(String uri) {
